@@ -1,5 +1,5 @@
 
-export default function header(){
+export default function header(title){
 
 
          if (window.innerWidth < 768){
@@ -24,7 +24,7 @@ export default function header(){
             <div class="inner_header_container">
                 <img  src="../assets/logo-dark.svg" alt= "image of the logo"/>
                 <div class="logo_splitter"></div>
-                <p class="heading_xl">Platform Launch</p>
+                <p class="heading_xl">${title}</p>
             </div>
             <div class="inner_header_container">
                 <button class="add_btn">+ <span>Add new task</span></button>
