@@ -1,18 +1,20 @@
 import header from "./components/header.js"
 import navbar from "./components/navbar.js"
+import initialize from "./configuration.js";
 
 const headerEl = document.querySelector("header");
 const boardCont = document.getElementById("board_container")
 let sidebar = window.innerWidth >= 768
+const data = await initialize()
 
 
-function fetchHeader(element){
-    console.log(element)
+// HEADER COMPONENT
+function fetchHeader(element, db){
     headerEl.innerHTML = header()
-    headerEl.innerHTML += navbar(element)
+    headerEl.innerHTML += navbar(element, db)
 }
  
-fetchHeader(sidebar)
+fetchHeader(sidebar, data)
 
 window.addEventListener("resize", () => {
     fetchHeader(sidebar)
@@ -21,8 +23,11 @@ window.addEventListener("resize", () => {
 
 function toggleSidebar(){
     sidebar = !sidebar
-    fetchHeader(sidebar)
+    fetchHeader(sidebar, data)
 }
 
 window.toggleSidebar = toggleSidebar;
 
+// BOARDS COMPONENT
+
+console.log(data)

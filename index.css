@@ -93,7 +93,7 @@ header,
 header{
     position: relative;
     background: var(--pure-white);
-    width: 100vw;
+    width: 100%;
     height: 64px;
     justify-content: space-between;
     align-items: center;
@@ -197,15 +197,16 @@ header{
     height: 15px;
     width: 60px;
     position: relative;
-    /* transform: rotate(90deg) translate(50px, 100px); */
   }
+
   span.slide {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #dadada;
+    background: var(--main-purple);
     border-radius: 30px;
   }
+
   span.slide:before {
     position: absolute;
     content: "";
@@ -230,6 +231,38 @@ header{
   .hide_container{
     gap: 1em;
     color: var(--medium-light-grey)
+  }
+
+  /* BOARD COMPONENT */
+
+  #board_container{
+    display: flex;
+    height: calc(100svh - 64px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1em;
+    gap: 25px;
+  }
+
+  #board_container > p{
+    text-align: center;
+    color: var(--medium-light-grey);
+  }
+
+  #board_container > button{
+    width: 174px;
+    font-size: .93rem;
+    font-weight: bold;
+    line-height: 19px;
+    color: var(--pure-white);
+    background: var(--main-purple);
+    padding: 1em 0;
+    cursor: pointer;
+  }
+
+  #board_container > button:hover{
+    background: var(--main-purple-hover);
   }
 
 

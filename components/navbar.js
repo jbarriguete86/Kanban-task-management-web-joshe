@@ -1,24 +1,19 @@
-export default function navabar(element){
+export default function navabar(element, db){
+    const boardNames = db.boards.map(data => data.name)
+
+    const titles = boardNames.map(name =>`
+        <div class="board_name_container">
+            <img src="../assets/icon-board.svg" alt="icon of the board selection"/>
+            <p class="heading_m">${name}</p>
+        </div>
+    `)
+
      if(element){
         return `
         <div class="boards_names_container">
             <div>
                 <p class="heading_s"> ALL BOARDS <span>(3)</span></p>
-                <div class="board_name_container">
-                    <img src="../assets/icon-board.svg" alt="icon of the board selection"/>
-                    <p class="heading_m">Platform Launch</p>
-                </div>
-    
-                <div class="board_name_container">
-                    <img src="../assets/icon-board.svg" alt="icon of the board selection"/>
-                    <p class="heading_m">Marketing plan</p>
-                </div>
-    
-                <div class="board_name_container">
-                    <img src="../assets/icon-board.svg" alt="icon of the board selection"/>
-                    <p class="heading_m">Roadmap</p>
-                </div>
-    
+                ${titles.join('')}
                 <div class="board_name_container">
                     <img src="../assets/icon-board.svg" alt="icon of the board selection"/>
                     <p class="heading_m">+ Create New Board</p>
