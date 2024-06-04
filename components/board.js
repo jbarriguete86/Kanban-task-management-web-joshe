@@ -20,5 +20,9 @@ return `
 `}
 ).join('')
 
-return columns
+return `
+${columns}
+<div class="create_column">
+<p class="heading_xl">+ new column</p>
+</div>`
 }

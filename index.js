@@ -31,7 +31,7 @@ function toggleSidebar(){
     sidebar = !sidebar
     const headerTitle=document.getElementById('headerTitle').innerText
     fetchHeader(sidebar, data, headerTitle)
-    // fetchboard() 
+    sidebar ? boardCont.classList.add('sidebar_active') : boardCont.classList.remove('sidebar_active')
 }
 
 function openBoardTitle(title){
@@ -51,6 +51,7 @@ const headerTitle=document.getElementById('headerTitle').innerText ? document.ge
 const dataBase = data.boards.filter(data => data.name === headerTitle)[0]
 const boardInfo = board(dataBase)
 boardCont.innerHTML=boardInfo
+sidebar ? boardCont.classList.add('sidebar_active') : boardCont.classList.remove('sidebar_active')
 }
 
 fetchboard()

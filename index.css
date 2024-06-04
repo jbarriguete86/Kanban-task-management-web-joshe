@@ -281,12 +281,13 @@ header{
   #board_container{
     display: flex;
     overflow-x:auto;
+    overflow-y: auto;
     height: calc(100svh - 64px);
     /* width: 340%; */
     /* flex-direction: column; */
     /* align-items: center; */
     /* justify-content: center; */
-    /* padding: 0 1em; */
+    padding: 0 1em;
     gap: 25px;
   }
 
@@ -298,8 +299,22 @@ header{
   
   .task_column{
     /* border: 1px solid blue; */
+    /* height: 100%; */
     gap: 20px;
     padding-top:1.5em;
+  }
+
+  .create_column{
+    margin-top: 3.8em;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--lighter-grey);
+    color: var(--medium-light-grey);
+    padding: 0 55px;
+    border-radius: 15px;
+    cursor: pointer;
   }
 
   .task{
@@ -398,6 +413,10 @@ header{
 
     .toggle_container{
         width: 100%;
+    }
+
+    .sidebar_active{
+        margin-left: 350px;
     }
 }
 
