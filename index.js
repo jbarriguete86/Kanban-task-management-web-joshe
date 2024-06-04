@@ -4,6 +4,7 @@ import initialize from "./configuration.js";
 
 const headerEl = document.querySelector("header");
 const boardCont = document.getElementById("board_container")
+const footer = document.querySelector("footer")
 let sidebar = window.innerWidth >= 768
 const data = await initialize()
 let board = data.boards.filter(data => data.name === "Platform Launch")[0].name
@@ -13,7 +14,7 @@ let board = data.boards.filter(data => data.name === "Platform Launch")[0].name
 function fetchHeader(element, db, title){
     headerEl.innerHTML = header(title)
     headerEl.innerHTML += navbar(element, db, title)
-    sidebar ? (boardCont.innerHTML += `<div><img src="./assets/icon-show-sidebar.svg" alt="icon to show the sidebar"/><div>`) : (boardCont.innerHTML -= `<div><img src="./assets/icon-show-sidebar.svg" alt="icon to show the sidebar"/><div>`)
+    !sidebar && footer.
 }
  
 fetchHeader(sidebar, data, board)

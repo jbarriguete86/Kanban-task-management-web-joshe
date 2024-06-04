@@ -67,6 +67,10 @@ body{
     font-family: "Plus Jakarta Sans", sans-serif;
     font-optical-sizing: auto;
     background: var(--light-grey);
+    height: 100svh;
+    /* width: 100svw; */
+    overflow-y: hidden;
+    
 }
 
 button{
@@ -252,6 +256,23 @@ header{
     cursor: pointer;
     gap: 1em;
     color: var(--medium-light-grey)
+  }
+
+  footer{
+    position: absolute;
+    display: flex;
+    bottom: 4em;
+    background-color: var(--main-purple);
+    width: 56px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    padding: 19px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  footer > img{
+    width: 16px;
   }
 
   /* BOARD COMPONENT */
