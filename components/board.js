@@ -6,7 +6,7 @@ const columns = db.columns.map(board =>{
         const completed = task.subtasks.filter(subtask=> subtask.isCompleted).length
         // console.log(completed)
     return`
-    <div class="task">
+    <div onclick="fetchTask('${task.title}', '${board.name}')" class="task">
         <p class="heading_m">${task.title}</p>
         <p class="completed_task body_m">${task.subtasks ? `${completed}/${task.subtasks.length} completed` : "no subtasks"}</p>
     </div>

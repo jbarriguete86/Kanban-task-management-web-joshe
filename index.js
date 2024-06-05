@@ -1,6 +1,7 @@
 import header from "./components/header.js"
 import navbar from "./components/navbar.js"
 import board from "./components/board.js"
+import tasks from "./components/tasks.js"
 import initialize from "./configuration.js";
 
 const headerEl = document.querySelector("header");
@@ -34,15 +35,23 @@ function toggleSidebar(){
     sidebar ? boardCont.classList.add('sidebar_active') : boardCont.classList.remove('sidebar_active')
 }
 
-function openBoardTitle(title){
-    fetchHeader(sidebar, data, title)
-    fetchboard()
+function openBoardTitle(title){ 
+    if(window.innerWidth < 768){
+        sidebar =!sidebar
+        fetchHeader(sidebar, data, title)
+        fetchboard()
+    } else {
+        fetchHeader(sidebar, data, title)
+        fetchboard()
+    }
 }
 
 
 
 window.toggleSidebar = toggleSidebar
 window.openBoardTitle = openBoardTitle
+window.fetchTask = fetchTask
+window.closeTasks = closeTasks
 
 // BOARDS COMPONENT
 
@@ -55,3 +64,26 @@ sidebar ? boardCont.classList.add('sidebar_active') : boardCont.classList.remove
 }
 
 fetchboard()
+
+// TASKS COMPONENT
+function fetchTask(task, status){
+
+    const headerTitle=document.getElementById('headerTitle').innerText
+    const dataBase = data.boards.filter(data => data.name === headerTitle)[0]
+    // Get the correct status array
+    const statusArr= dataBase.columns.map(stat => stat.name)
+
+    // Get the correct task array
+    const stat = dataBase.columns.filter(stat => stat.name === status)
+    const taskArr = stat[0].tasks.filter(tsk=> tsk.title === task)[0]
+    const taskinfo = tasks(taskArr, statusArr)
+    document.querySelector('.tasks_cont') && document.querySelector('.tasks_cont').remove()
+    boardCont.innerHTML+=taskinfo
+
+
+    }
+
+    function closeTasks(){
+        document.querySelector('.tasks_cont').remove()
+    }
+    
