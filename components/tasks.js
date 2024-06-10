@@ -12,20 +12,22 @@ export default function tasks(info, statusArr){
 
     return `
     <div class="tasks_cont">
-        <div class="task_title_cont">
-            <p class="heading_l">${info.title}</p>
-            <img onclick="closeTasks()" src="../assets/icon-vertical-ellipsis.svg" alt="selector to view details"/>
-        </div>
-        ${info.description && `<p class="body_l">${info.description}</p>`}
-        <div class="subtasks_cont">
-            <p> Subtasks(${completed.length} of ${info.subtasks.length})</p>
-            ${taskComponents}
-        </div>
-        <div class="status_cont">
-            <label for="dropdown">Current status </label>
-            <select class="body_l"  id="dropdown">
-            ${statusOptions}
-            </select>
+        <div class="tasks_inner_cont">
+            <div class="task_title_cont">
+                <p class="heading_l">${info.title}</p>
+                <img onclick="closeTasks()" src="../assets/icon-vertical-ellipsis.svg" alt="selector to view details"/>
+            </div>
+            ${info.description && `<p class="body_l">${info.description}</p>`}
+            <div class="subtasks_cont">
+                <p> Subtasks(${completed.length} of ${info.subtasks.length})</p>
+                ${taskComponents}
+            </div>
+            <div class="status_cont">
+                <label for="dropdown">Current status </label>
+                <select class="body_l"  id="dropdown">
+                ${statusOptions}
+                </select>
+            </div>
         </div>
     <div>
     `   

@@ -364,6 +364,7 @@ header{
 
   /* TASKS COMPONENT */
   .tasks_cont,
+  .tasks_inner_cont,
   .task_title_cont,
   .subtasks_cont,
   .subtasks_cont > div,
@@ -372,10 +373,20 @@ header{
   }
 
   .tasks_cont{
+    background-color: rgba(0, 0, 0, 0.41);
+    width: 100vw;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin: 0;
+    left: -0em;
+  }
+
+  .tasks_inner_cont{
     width: 80%;
     min-height: 70%;
     background: var(--pure-white);
-    position: absolute;
     top: 5em;
     border-radius: 5px;
     flex-direction: column;
@@ -385,17 +396,17 @@ header{
 
   .task_title_cont{
     align-items: center;
+    justify-content: space-between;
     gap: 1em;
   }
 
-  .task_title_cont > img{
-    margin-right: 1em;
-  }
+ 
 
   .subtasks_cont{
     flex-direction: column;
     gap: 8px;
     flex-grow: 1;
+    /* border: 1px solid purple; */
   }
 
   .subtasks_cont > p {
@@ -415,11 +426,13 @@ header{
     color: var(--medium-grey);
     gap: 1em;
     align-items: center;
+    justify-content: center;
     padding: 8px 1em;
   }
 
   .subtasks_cont > div > label{
     flex-grow: 1;
+    height: fit-content;
 
   }
 
@@ -512,6 +525,10 @@ header{
         top: 90px;
         height: calc(100svh - 90px);
 
+    }
+
+    .tasks_inner_cont{
+      width: 50%;
     }
 }
 
