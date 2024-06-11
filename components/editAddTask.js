@@ -23,7 +23,7 @@ export default function editAddTask(info=null, statusArr){
 
     return `
         <div class="tasks_cont" onclick="closeTasks(event)">
-            <div class="tasks_inner_cont" onclick="event.stopPropagation()">
+            <div class="tasks_inner_cont add_main" onclick="event.stopPropagation()">
                 <p class="heading_l">${isEditing ? 'Edit Task' : 'Add Task'}</p>
                 <div class="edit_form_cont">
                     <label for="title">Title</label>
