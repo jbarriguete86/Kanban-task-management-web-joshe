@@ -11,11 +11,11 @@ export default function tasks(info, statusArr){
     const completed= info.subtasks.filter(task => task.isCompleted)
 
     return `
-    <div class="tasks_cont">
-        <div class="tasks_inner_cont">
+    <div onclick="closeTasks()" class="tasks_cont">
+        <div onclick="event.stopPropagation()" class="tasks_inner_cont">
             <div class="task_title_cont">
-                <p class="heading_l">${info.title}</p>
-                <img onclick="closeTasks()" src="../assets/icon-vertical-ellipsis.svg" alt="selector to view details"/>
+                <p class="task_title heading_l">${info.title}</p>
+                <img onclick="editTsk()" src="../assets/icon-vertical-ellipsis.svg" alt="selector to view details"/>
             </div>
             ${info.description && `<p class="body_l">${info.description}</p>`}
             <div class="subtasks_cont">

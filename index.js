@@ -2,6 +2,7 @@ import header from "./components/header.js"
 import navbar from "./components/navbar.js"
 import board from "./components/board.js"
 import tasks from "./components/tasks.js"
+import editAddTask from "./components/editAddTask.js"
 import initialize from "./configuration.js";
 
 const headerEl = document.querySelector("header");
@@ -47,12 +48,6 @@ function openBoardTitle(title){
 }
 
 
-
-window.toggleSidebar = toggleSidebar
-window.openBoardTitle = openBoardTitle
-window.fetchTask = fetchTask
-window.closeTasks = closeTasks
-
 // BOARDS COMPONENT
 
 function fetchboard(){
@@ -67,23 +62,39 @@ fetchboard()
 
 // TASKS COMPONENT
 function fetchTask(task, status){
-
     const headerTitle=document.getElementById('headerTitle').innerText
     const dataBase = data.boards.filter(data => data.name === headerTitle)[0]
-    // Get the correct status array
     const statusArr= dataBase.columns.map(stat => stat.name)
-
-    // Get the correct task array
     const stat = dataBase.columns.filter(stat => stat.name === status)
     const taskArr = stat[0].tasks.filter(tsk=> tsk.title === task)[0]
-    const taskinfo = tasks(taskArr, statusArr)
+    const taskInfo = tasks(taskArr, statusArr)
     document.querySelector('.tasks_cont') && document.querySelector('.tasks_cont').remove()
-    boardCont.innerHTML+=taskinfo
-
-
+    boardCont.innerHTML+=taskInfo
     }
 
     function closeTasks(){
         document.querySelector('.tasks_cont').remove()
     }
+
+    // EDIT TASK COMPONENT
     
+    function editTsk(){
+        const headerTitle=document.getElementById('headerTitle').innerText
+        const dataBase = data.boards.filter(data => data.name === headerTitle)[0]
+        const statusArr= dataBase.columns.map(stat => stat.name)
+        const taskTitle = document.querySelector('.task_title') ? document.querySelector('.task_title').innerText : null
+        const tasks= dataBase.columns.map(data => data.tasks).flat()
+        const targetTask= tasks.filter(task=> task.title === taskTitle)
+        const editInfo=editAddTask(targetTask[0], statusArr)
+        document.querySelector('.tasks_cont') && document.querySelector('.tasks_cont').remove()
+        boardCont.innerHTML+=editInfo
+    }
+
+
+    // WINDOW FUNCTIONS
+
+    window.toggleSidebar = toggleSidebar
+    window.openBoardTitle = openBoardTitle
+    window.fetchTask = fetchTask
+    window.closeTasks = closeTasks
+    window.editTsk = editTsk

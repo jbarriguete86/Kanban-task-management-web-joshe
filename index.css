@@ -373,6 +373,7 @@ header{
   }
 
   .tasks_cont{
+    z-index: 2;
     background-color: rgba(0, 0, 0, 0.41);
     width: 100vw;
     height: 100%;
@@ -451,6 +452,41 @@ header{
     border-color: var(--light-grey);
   }
 
+  /* ADD & EDIT TASK */
+  .edit_form_cont{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .edit_form_cont > label {
+    color: var(--medium-light-grey);
+    font-size: .85rem;
+    font-weight: bold;
+
+  }
+
+
+  .tasks_inner_cont > button{
+    background-color: var(--main-purple);
+    color: var(--pure-white);
+    font-weight: bold;
+  }
+
+  .tasks_inner_cont > button:hover{
+    background-color: var(--main-purple-hover);
+  }
+
+  .subtasks_cont > button{
+    background-color: var(--light-grey);
+    color: var(--main-purple);
+    font-weight: bold;
+  }
+
+
+  .subtasks_cont > button:hover{
+    background-color: var(--main-purple);
+    color: var(--pure-white);
+  }
   
 
 /* media queries */
