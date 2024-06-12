@@ -19,7 +19,8 @@ export default function editAddTask(info=null, statusArr){
     const statusOptions = (statusArr || []).map(stat => `
         <option value="${stat}" ${info && stat === info.status ? 'selected' : ''}>${stat}</option>`).join('')
 
-    const isEditing = !!info
+    const isEditing = info ? true : false
+    console.log(info)
 
     return `
         <div class="tasks_cont" onclick="closeTasks(event)">
@@ -33,18 +34,18 @@ export default function editAddTask(info=null, statusArr){
                         value="${isEditing ? info.title : ''}"
                         name="title"
                         id="title"
+                        class="body-l"
                         required
                     />
                     
                     <label for="description">Description</label>
-                    <input
-                        type="text"
+                    <textarea
                         placeholder="e.g It's always good to take a break. This 15 minute break will recharge the batteries a little"
-                        value="${isEditing ? info.description : ''}"
                         name="description"
                         id="description"
+                        class="body-l"
                         required
-                    />
+                    >${isEditing && info.description ? info.description : ''}</textarea>
 
                     <div class="subtasks_cont">
                         <p>Subtasks</p>

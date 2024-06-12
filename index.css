@@ -462,7 +462,19 @@ header{
     color: var(--medium-light-grey);
     font-size: .85rem;
     font-weight: bold;
+  }
 
+  .edit_form_cont > input,
+  .edit_form_cont > textarea{
+    border: 1px solid var(--light-grey);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    padding: 1em;
+  }
+
+  #description{
+    resize: none;
+    overflow-y: auto;
+    height: 112px;
   }
 
 
