@@ -15,7 +15,7 @@ export default function tasks(info, statusArr){
         <div onclick="event.stopPropagation()" class="tasks_inner_cont">
             <div class="task_title_cont">
                 <p class="task_title heading_l">${info.title}</p>
-                <img onclick="editTsk()" src="../assets/icon-vertical-ellipsis.svg" alt="selector to view details"/>
+                <img class="vertical_ellipsis" onclick="getDeletePopup('task', '${info.title}')" src="../assets/icon-vertical-ellipsis.svg" alt="selector to view details"/>
             </div>
             ${info.description && `<p class="body_l">${info.description}</p>`}
             <div class="subtasks_cont">

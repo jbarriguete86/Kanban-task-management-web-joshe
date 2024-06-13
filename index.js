@@ -3,15 +3,19 @@ import navbar from "./components/navbar.js"
 import board from "./components/board.js"
 import tasks from "./components/tasks.js"
 import editAddTask from "./components/editAddTask.js"
+import deleteEdit from "./components/deleteEdit.js"
+import deleteComponent from "./components/deleteComponent.js"
 import initialize from "./configuration.js";
 
 const headerEl = document.querySelector("header");
 const boardCont = document.getElementById("board_container")
 const footer = document.querySelector("footer")
+const bodyEl = document.querySelector("body")
 let sidebar = window.innerWidth >= 768
 const data = await initialize()
 let firstTitle = data.boards.filter(data => data.name === "Platform Launch")[0].name
 
+console.log(bodyEl)
 
 // HEADER COMPONENT
 function fetchHeader(element, db, title){
@@ -90,6 +94,35 @@ function fetchTask(task, status){
         boardCont.innerHTML+=editInfo
     }
 
+    // DELETE OR EDIT BOARD/TASK
+
+    function getDeletePopup(name, title){
+        if( document.querySelector('.delete_main')){
+            document.querySelector('.delete_main') && document.querySelector('.delete_main').remove()
+        } else {
+            const popUpEl=deleteEdit(name, title)
+            if(name === "board"){
+                boardCont.innerHTML +=popUpEl
+                
+            } else {
+                document.querySelector('.task_title_cont').innerHTML +=popUpEl
+            }
+        }
+    }
+
+    // DELETE COMPONENTS
+
+    function deleteComp(type, name){
+        const componentEl=deleteComponent(type, name)
+        document.querySelector('.tasks_cont') && document.querySelector('.tasks_cont').remove()
+        document.querySelector('.delete_main') && document.querySelector('.delete_main').remove()
+        boardCont.innerHTML +=componentEl
+    }
+
+    function cancelDelete(){
+        document.querySelector(".delete_cont").remove()
+    }
+
 
     // WINDOW FUNCTIONS
 
@@ -98,3 +131,6 @@ function fetchTask(task, status){
     window.fetchTask = fetchTask
     window.closeTasks = closeTasks
     window.editTsk = editTsk
+    window.getDeletePopup = getDeletePopup
+    window.deleteComp = deleteComp
+    window.cancelDelete = cancelDelete

@@ -68,8 +68,9 @@ body{
     font-optical-sizing: auto;
     background: var(--light-grey);
     height: 100svh;
-    /* width: 100svw; */
     overflow-y: hidden;
+    overflow-x: auto;
+    position: relative;
     
 }
 
@@ -122,7 +123,7 @@ header{
     cursor: pointer;
 }
 
-.open_sidebar{
+.open_popUp{
     cursor: pointer;
 }
 
@@ -164,6 +165,8 @@ header{
     align-items: center;
     justify-content: space-between;
     padding: 2em 0;
+    overflow-x: auto;
+    /* white-space: nowrap; */
 }
 
 .boards_names_container > div{
@@ -317,6 +320,13 @@ header{
     cursor: pointer;
   }
 
+
+  .create_column:hover{
+    color: var(--main-purple);
+    font-weight: bolder;
+  }
+
+
   .task{
         width: 280px ;
         background-color: var(--pure-white);
@@ -375,7 +385,7 @@ header{
   .tasks_cont{
     z-index: 2;
     background-color: rgba(0, 0, 0, 0.41);
-    width: 100vw;
+    width: 100svw;
     height: 100%;
     justify-content: center;
     align-items: center;
@@ -393,12 +403,18 @@ header{
     flex-direction: column;
     padding: 1.5em 1em;
     gap: 1em;
+    /* position: relative; */
+  }
+
+  .vertical_ellipsis{
+    cursor: pointer;
   }
 
   .task_title_cont{
     align-items: center;
     justify-content: space-between;
     gap: 1em;
+    position: relative;
   }
 
  
@@ -462,6 +478,7 @@ header{
     color: var(--medium-light-grey);
     font-size: .85rem;
     font-weight: bold;
+    margin-bottom: 8px;
   }
 
   .edit_form_cont > input,
@@ -469,6 +486,7 @@ header{
     border: 1px solid var(--light-grey);
     font-family: "Plus Jakarta Sans", sans-serif;
     padding: 1em;
+    margin-bottom: 24px;
   }
 
   #description{
@@ -488,18 +506,156 @@ header{
     background-color: var(--main-purple-hover);
   }
 
-  .subtasks_cont > button{
+  .subtasks_cont_edit,
+  .subtasks_cont_edit > div{
+    display: flex;
+    gap: .80em;
+  }
+
+  .subtasks_cont_edit{
+    flex-direction: column;
+    margin-bottom: 1.2em;
+  }
+
+  .subtasks_cont_edit > div{
+    height: 40px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .subtasks_cont_edit > div > input{
+    height: 100%;
+    width: 85%;
+    border: 1px solid var(--light-grey);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    padding: 1em;
+  }
+
+  .subtasks_cont_edit > div > p{
+    font-weight: bolder;
+    font-size: larger;
+    color: var(--medium-light-grey);
+    margin-right: .4em;
+  }
+
+  .subtasks_cont_edit > button{
     background-color: var(--light-grey);
     color: var(--main-purple);
     font-weight: bold;
+    
   }
 
 
-  .subtasks_cont > button:hover{
+  .subtasks_cont_edit > button:hover{
     background-color: var(--main-purple);
     color: var(--pure-white);
   }
+
+  /* Edit Delete component */
+  .delete_main{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    position:absolute;
+    max-width:192px;
+    padding: 1em;
+    background-color: white;
+    border-radius: 15px;
+    z-index: 2;
+    /* border: 1px solid brown; */
+    
+  }
+
+  .delete_board{
+    top: 64px;
+    right: 0;
+    text-align: right;
+  }
+
+  .delete_task{
+    top: 60px;
+    right: -35px;
+    text-align: right;
+  }
+
+  .delete_main > p{
+    cursor: pointer;
+    text-transform: capitalize;
+    width: 160px;
+  }
+
+  .delete_main > p:first-child {
+    color:var(--medium-light-grey);
+  }
   
+  .delete_main > p:first-child:hover{
+    color: var(--main-purple);
+  }
+
+  .delete{
+    color:var(--red);
+  }
+
+  .delete:hover{
+    color:var(--red-hover);
+  }
+
+  /* Delete components  */
+  .delete_cont,
+  .delete_inner_cont
+  {
+    display: flex;
+  }
+
+  .delete_cont{
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.41);
+    width: 100svw;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin: 0;
+    left: -0em;
+  }
+
+  .delete_inner_cont{
+    width: 80%;
+    min-height: 70%;
+    background: var(--pure-white);
+    top: 5em;
+    border-radius: 5px;
+    flex-direction: column;
+    padding: 1.5em 1em;
+    gap: 1em;
+  }
+
+  .delete_inner_cont .heading_l{
+    color: var(--red)
+  }
+
+  .delete_inner_cont .body_l{
+    color:var(--medium-grey);
+  }
+
+  .delete_btn{
+    color: var(--pure-white);
+    background-color: var(--red);
+  }
+
+  .delete_btn:hover{
+    background-color: var(--red-hover);
+  }
+
+  .cancel_btn{
+    background-color: var(--main-purple-hover);
+    color:var(--main-purple);
+  }
+
+  .cancel_btn{
+    background-color: var(--main-purple);
+    color: var(--pure-white);
+  }
 
 /* media queries */
 @media (min-width: 768px){
@@ -556,14 +712,24 @@ header{
     .sidebar_active{
         margin-left: 350px;
     }
+
+    .delete_board{
+      top: 80px;
+      right: 5px;
+      text-align: left;
+    }
+  
+    .delete_task{
+      top: 40px;
+      right: -60px;
+      text-align: left;
+    }
 }
 
 @media (min-width: 1024px){
     header{
         height: 90px;
     }
-
-
 
     .logo_splitter{
         height: 90px;
@@ -577,6 +743,10 @@ header{
 
     .tasks_inner_cont{
       width: 50%;
+    }
+
+    .delete_board{
+      top: 90px;
     }
 }
 

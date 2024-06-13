@@ -47,7 +47,7 @@ export default function editAddTask(info=null, statusArr){
                         required
                     >${isEditing && info.description ? info.description : ''}</textarea>
 
-                    <div class="subtasks_cont">
+                    <div class="subtasks_cont_edit">
                         <p>Subtasks</p>
                         ${getSubtasks()}
                         <button onclick="addSubtask()">+ Add New Subtask</button>

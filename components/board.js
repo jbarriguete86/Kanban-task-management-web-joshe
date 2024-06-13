@@ -23,6 +23,6 @@ return `
 return `
 ${columns}
 <div class="create_column">
-<p class="heading_xl">+ new column</p>
+<p class="heading_xl">+ New Column</p>
 </div>`
 }

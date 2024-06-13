@@ -14,6 +14,7 @@ export default function header(title){
                 </div>
                 <div class="inner_header_container">
                     <button onclick="editTsk()" class="add_btn">+</button>
+                    <img class="open_popUp" onclick="getDeletePopup('board', '${title}')" src="../assets/icon-vertical-ellipsis.svg" alt="selector to view details"/>
                 </div>
              `
 
@@ -27,7 +28,7 @@ export default function header(title){
             </div>
             <div class="inner_header_container">
                 <button onclick="editTsk()" class="add_btn">+ <span>Add new task</span></button>
-                <img class="open_sidebar" src="../assets/icon-vertical-ellipsis.svg" alt="selector to view details"/>
+                <img class="open_popUp" onclick="getDeletePopup('board', '${title}')" src="../assets/icon-vertical-ellipsis.svg" alt="selector to view details"/>
             </div>
          `  
          }
