@@ -725,6 +725,22 @@ header{
       right: -60px;
       text-align: left;
     }
+
+    .delete_inner_cont{
+      width: 30%;
+      min-height: 20%;
+
+      /* flex-direction: row; */
+    }
+
+    .delete_inner_cont > div{
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    .delete_inner_cont > div > button{
+      width: 50%;
+    }
 }
 
 @media (min-width: 1024px){
