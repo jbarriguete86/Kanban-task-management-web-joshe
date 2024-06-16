@@ -286,10 +286,6 @@ header{
     overflow-x:auto;
     overflow-y: auto;
     height: calc(100svh - 64px);
-    /* width: 340%; */
-    /* flex-direction: column; */
-    /* align-items: center; */
-    /* justify-content: center; */
     padding: 0 1em;
     gap: 25px;
   }
@@ -301,8 +297,6 @@ header{
   }
   
   .task_column{
-    /* border: 1px solid blue; */
-    /* height: 100%; */
     gap: 20px;
     padding-top:1.5em;
   }
@@ -602,7 +596,8 @@ header{
 
   /* Delete components  */
   .delete_cont,
-  .delete_inner_cont
+  .delete_inner_cont,
+  .delete_inner_cont > div
   {
     display: flex;
   }
@@ -621,7 +616,7 @@ header{
 
   .delete_inner_cont{
     width: 80%;
-    min-height: 70%;
+    min-height: 50%;
     background: var(--pure-white);
     top: 5em;
     border-radius: 5px;
@@ -638,6 +633,11 @@ header{
     color:var(--medium-grey);
   }
 
+  .delete_inner_cont > div{
+    flex-direction: column;
+    gap: 1em;
+  }
+
   .delete_btn{
     color: var(--pure-white);
     background-color: var(--red);
@@ -648,11 +648,12 @@ header{
   }
 
   .cancel_btn{
-    background-color: var(--main-purple-hover);
+    background-color: var(--light-grey);
     color:var(--main-purple);
+    font-weight: bold;
   }
 
-  .cancel_btn{
+  .cancel_btn:hover{
     background-color: var(--main-purple);
     color: var(--pure-white);
   }
