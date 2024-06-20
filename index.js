@@ -14,21 +14,22 @@ const bodyEl = document.querySelector("body")
 let sidebar = window.innerWidth >= 768
 const data = await initialize()
 let firstTitle = data.boards.filter(data => data.name === "Platform Launch")[0].name
+let mode = false
 
 console.log(bodyEl)
 
 // HEADER COMPONENT
-function fetchHeader(element, db, title){
-    headerEl.innerHTML = header(title)
-    headerEl.innerHTML += navbar(element, db, title)
+function fetchHeader(element, db, title, mode){
+    headerEl.innerHTML = header(title, mode)
+    headerEl.innerHTML += navbar(element, db, title, mode)
     !sidebar && window.innerWidth >=768 ? footer.classList.remove("invisible") : footer.classList.add("invisible")
 }
  
-fetchHeader(sidebar, data, firstTitle)
+fetchHeader(sidebar, data, firstTitle, mode)
 
 window.addEventListener("resize", () => {
     const headerTitle=document.getElementById('headerTitle').innerText
-    headerTitle ? fetchHeader(sidebar, data, headerTitle) : fetchHeader(sidebar, data, firstTitle)
+    headerTitle ? fetchHeader(sidebar, data, headerTitle, mode) : fetchHeader(sidebar, data, firstTitle, mode)
     
 })
 
@@ -36,17 +37,17 @@ window.addEventListener("resize", () => {
 function toggleSidebar(){
     sidebar = !sidebar
     const headerTitle=document.getElementById('headerTitle').innerText
-    fetchHeader(sidebar, data, headerTitle)
+    fetchHeader(sidebar, data, headerTitle, mode)
     sidebar ? boardCont.classList.add('sidebar_active') : boardCont.classList.remove('sidebar_active')
 }
 
 function openBoardTitle(title){ 
     if(window.innerWidth < 768){
         sidebar =!sidebar
-        fetchHeader(sidebar, data, title)
+        fetchHeader(sidebar, data, title, mode)
         fetchboard()
     } else {
-        fetchHeader(sidebar, data, title)
+        fetchHeader(sidebar, data, title, mode)
         fetchboard()
     }
 }
@@ -57,7 +58,7 @@ function openBoardTitle(title){
 function fetchboard(){
 const headerTitle=document.getElementById('headerTitle').innerText ? document.getElementById('headerTitle').innerText : firstTitle
 const dataBase = data.boards.filter(data => data.name === headerTitle)[0]
-const boardInfo = board(dataBase)
+const boardInfo = board(dataBase, mode)
 boardCont.innerHTML=boardInfo
 sidebar ? boardCont.classList.add('sidebar_active') : boardCont.classList.remove('sidebar_active')
 }
@@ -123,6 +124,16 @@ function fetchTask(task, status){
         document.querySelector(".delete_cont").remove()
     }
 
+    // DARK MODE BUTTON
+    function toggleMode(){
+        const headerTitle=document.getElementById('headerTitle').innerText
+        mode = !mode
+        headerTitle ? fetchHeader(sidebar, data, headerTitle, mode) : fetchHeader(sidebar, data, firstTitle, mode)
+        mode ? headerEl.classList.add('dark_main_cont') : headerEl.classList.remove('dark_main_cont')
+        console.log(mode)
+
+    }
+
 
     // WINDOW FUNCTIONS
 
@@ -134,3 +145,4 @@ function fetchTask(task, status){
     window.getDeletePopup = getDeletePopup
     window.deleteComp = deleteComp
     window.cancelDelete = cancelDelete
+    window.toggleMode = toggleMode

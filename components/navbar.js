@@ -1,4 +1,4 @@
-export default function navabar(element, db, currentBoard){
+export default function navabar(element, db, currentBoard, mode){
     const boardNames = db.boards.map(data => data.name)
 
 
@@ -11,7 +11,7 @@ export default function navabar(element, db, currentBoard){
 
      if(element){
         return `
-        <div class="boards_names_container">
+        <div class="boards_names_container ${mode && "dark_main_cont"}">
             <div>
                 <p class="heading_s"> ALL BOARDS <span>(3)</span></p>
                 ${titles.join('')}
@@ -22,10 +22,10 @@ export default function navabar(element, db, currentBoard){
             </div>
     
             <div>
-                <div class="toggle_container">
+                <div class="toggle_container ${mode && "dark_toggle_cont"}">
                     <img class="toggle_img" src="../assets/icon-light-theme.svg" alt="dark them icon"/>
                     <label for="ChangeTheme">
-                    <input type="checkbox" id="ChangeTheme" /> <span class="slide"></span>
+                    <input type="checkbox" id="ChangeTheme" onclick="toggleMode()"/> <span class="slide"></span>
                     </label>
                     <img class="toggle_img" src="../assets/icon-dark-theme.svg" alt="dark them icon"/>
                     

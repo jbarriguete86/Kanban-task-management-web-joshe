@@ -380,12 +380,13 @@ header{
     z-index: 2;
     background-color: rgba(0, 0, 0, 0.41);
     width: 100svw;
-    height: 100%;
+    height: calc(100vh + 64px);
     justify-content: center;
     align-items: center;
     position: absolute;
     margin: 0;
     left: -0em;
+    top: -64px;
   }
 
   .tasks_inner_cont{
@@ -606,17 +607,18 @@ header{
     z-index: 2;
     background-color: rgba(0, 0, 0, 0.41);
     width: 100svw;
-    height: 100%;
+    height: calc(100vh + 64px);
     justify-content: center;
     align-items: center;
     position: absolute;
     margin: 0;
     left: -0em;
+    top: -64px;
   }
 
   .delete_inner_cont{
     width: 80%;
-    min-height: 50%;
+    /* min-height: 50%; */
     background: var(--pure-white);
     top: 5em;
     border-radius: 5px;
@@ -658,10 +660,31 @@ header{
     color: var(--pure-white);
   }
 
+  /* DARK MODE FUNCTION */
+
+  .dark_toggle_cont{
+    background-color: var(--pure-black);
+  }
+
+  .dark_main_cont{
+    background-color: var(--dark-grey);
+
+  }
+
+  .dark_title{
+    color: var(--pure-white);
+  }
+
 /* media queries */
 @media (min-width: 768px){
     header{
         height: 80px;
+    }
+
+    .tasks_cont,
+    .delete_cont{
+      top: -80px;
+      height: calc(100vh + 80px);
     }
 
     .logo_splitter{
@@ -746,6 +769,12 @@ header{
 @media (min-width: 1024px){
     header{
         height: 90px;
+    }
+
+    .tasks_cont,
+    .delete_cont{
+      top: -90px;
+      height: calc(100vh + 90px);
     }
 
     .logo_splitter{

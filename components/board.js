@@ -1,4 +1,4 @@
-export default function board(db){
+export default function board(db, mode){
 
 const columns = db.columns.map(board =>{
     const taskNumbers = board.tasks.length
@@ -7,7 +7,7 @@ const columns = db.columns.map(board =>{
         // console.log(completed)
     return`
     <div onclick="fetchTask('${task.title}', '${board.name}')" class="task">
-        <p class="heading_m">${task.title}</p>
+        <p class="heading_m ${mode && "dark_title"}">${task.title}</p>
         <p class="completed_task body_m">${task.subtasks ? `${completed}/${task.subtasks.length} completed` : "no subtasks"}</p>
     </div>
     `}).join('')
