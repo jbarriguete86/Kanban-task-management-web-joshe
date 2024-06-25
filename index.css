@@ -675,6 +675,35 @@ header{
     color: var(--pure-white);
   }
 
+  .dark_board{
+    background-color: var(--pure-black) !important;
+  }
+
+  .task_dark{
+    background: var(--dark-grey);
+  }
+
+  .dark_subtitle{
+    color: var(--medium-light-grey);
+  }
+
+  .new_column_dark{
+    background: var(--dark-grey);
+  }
+
+  .select_dark{
+    background: var(--dark-grey);
+    color: var(--pure-white);
+  }
+
+  .task_inner_dark_selected{
+    background: var(--dark-grey);
+  }
+
+  .task_inner_dark{
+    background: var(--dark-grey);
+  }
+
 /* media queries */
 @media (min-width: 768px){
     header{

@@ -16,7 +16,6 @@ const data = await initialize()
 let firstTitle = data.boards.filter(data => data.name === "Platform Launch")[0].name
 let mode = false
 
-console.log(bodyEl)
 
 // HEADER COMPONENT
 function fetchHeader(element, db, title, mode){
@@ -66,13 +65,13 @@ sidebar ? boardCont.classList.add('sidebar_active') : boardCont.classList.remove
 fetchboard()
 
 // TASKS COMPONENT
-function fetchTask(task, status){
+function fetchTask(task, status, mode){
     const headerTitle=document.getElementById('headerTitle').innerText
     const dataBase = data.boards.filter(data => data.name === headerTitle)[0]
     const statusArr= dataBase.columns.map(stat => stat.name)
     const stat = dataBase.columns.filter(stat => stat.name === status)
     const taskArr = stat[0].tasks.filter(tsk=> tsk.title === task)[0]
-    const taskInfo = tasks(taskArr, statusArr)
+    const taskInfo = tasks(taskArr, statusArr, mode)
     document.querySelector('.tasks_cont') && document.querySelector('.tasks_cont').remove()
     boardCont.innerHTML+=taskInfo
     }
@@ -125,12 +124,24 @@ function fetchTask(task, status){
     }
 
     // DARK MODE BUTTON
+    function displayDark(mode){
+        if (mode){
+            headerEl.classList.add('dark_main_cont')
+            boardCont.classList.add('dark_board')
+        
+        } else{
+            headerEl.classList.remove('dark_main_cont')
+            boardCont.classList.remove('dark_board')
+            
+        }
+    }
+
     function toggleMode(){
         const headerTitle=document.getElementById('headerTitle').innerText
         mode = !mode
         headerTitle ? fetchHeader(sidebar, data, headerTitle, mode) : fetchHeader(sidebar, data, firstTitle, mode)
-        mode ? headerEl.classList.add('dark_main_cont') : headerEl.classList.remove('dark_main_cont')
-        console.log(mode)
+        displayDark(mode)
+        fetchboard()
 
     }
 
