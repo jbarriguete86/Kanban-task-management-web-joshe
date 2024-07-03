@@ -82,25 +82,25 @@ function fetchTask(task, status, mode){
 
     // EDIT TASK COMPONENT
     
-    function editTsk(){
+    function editTsk(mode){
         const headerTitle=document.getElementById('headerTitle').innerText
         const dataBase = data.boards.filter(data => data.name === headerTitle)[0]
         const statusArr= dataBase.columns.map(stat => stat.name)
         const taskTitle = document.querySelector('.task_title') ? document.querySelector('.task_title').innerText : null
         const tasks= dataBase.columns.map(data => data.tasks).flat()
         const targetTask= tasks.filter(task=> task.title === taskTitle)
-        const editInfo=editAddTask(targetTask[0], statusArr)
+        const editInfo=editAddTask(targetTask[0], statusArr, mode)
         document.querySelector('.tasks_cont') && document.querySelector('.tasks_cont').remove()
         boardCont.innerHTML+=editInfo
     }
 
     // DELETE OR EDIT BOARD/TASK
 
-    function getDeletePopup(name, title){
+    function getDeletePopup(name, title, mode){
         if( document.querySelector('.delete_main')){
             document.querySelector('.delete_main') && document.querySelector('.delete_main').remove()
         } else {
-            const popUpEl=deleteEdit(name, title)
+            const popUpEl=deleteEdit(name, title, mode)
             if(name === "board"){
                 boardCont.innerHTML +=popUpEl
                 
@@ -112,8 +112,8 @@ function fetchTask(task, status, mode){
 
     // DELETE COMPONENTS
 
-    function deleteComp(type, name){
-        const componentEl=deleteComponent(type, name)
+    function deleteComp(type, name, mode){
+        const componentEl=deleteComponent(type, name, mode)
         document.querySelector('.tasks_cont') && document.querySelector('.tasks_cont').remove()
         document.querySelector('.delete_main') && document.querySelector('.delete_main').remove()
         boardCont.innerHTML +=componentEl

@@ -13,8 +13,8 @@ export default function header(title, mode){
                     </div>
                 </div>
                 <div class="inner_header_container">
-                    <button onclick="editTsk()" class="add_btn">+</button>
-                    <img class="open_popUp" onclick="getDeletePopup('board', '${title}')" src="../assets/icon-vertical-ellipsis.svg" alt="selector to view details"/>
+                    <button onclick="editTsk(${mode})" class="add_btn">+</button>
+                    <img class="open_popUp" onclick="getDeletePopup('board', '${title}', ${mode})" src="../assets/icon-vertical-ellipsis.svg" alt="selector to view details"/>
                 </div>
              `
 
@@ -27,8 +27,8 @@ export default function header(title, mode){
                 <p id="headerTitle" class="heading_xl ${mode && "dark_title"}">${title}</p>
             </div>
             <div class="inner_header_container">
-                <button onclick="editTsk()" class="add_btn">+ <span>Add new task</span></button>
-                <img class="open_popUp" onclick="getDeletePopup('board', '${title}')" src="../assets/icon-vertical-ellipsis.svg" alt="selector to view details"/>
+                <button onclick="editTsk(${mode})" class="add_btn">+ <span>Add new task</span></button>
+                <img class="open_popUp" onclick="getDeletePopup('board', '${title}', ${mode})" src="../assets/icon-vertical-ellipsis.svg" alt="selector to view details"/>
             </div>
          `  
          }

@@ -25,7 +25,7 @@ export default function navabar(element, db, currentBoard, mode){
                 <div class="toggle_container ${mode && "dark_toggle_cont"}">
                     <img class="toggle_img" src="../assets/icon-light-theme.svg" alt="dark them icon"/>
                     <label for="ChangeTheme">
-                    <input type="checkbox" id="ChangeTheme" onclick="toggleMode()"/> <span class="slide"></span>
+                    <input type="checkbox" id="ChangeTheme" onclick="toggleMode()"/> <span class="slide ${mode && "slide_dark"}"></span>
                     </label>
                     <img class="toggle_img" src="../assets/icon-dark-theme.svg" alt="dark them icon"/>
                     
