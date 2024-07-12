@@ -6,6 +6,7 @@ import editAddTask from "./components/editAddTask.js"
 import deleteEdit from "./components/deleteEdit.js"
 import deleteComponent from "./components/deleteComponent.js"
 import initialize from "./configuration.js";
+// import {getBoards} from "./configuration.js";
 
 const headerEl = document.querySelector("header");
 const boardCont = document.getElementById("board_container")
@@ -13,9 +14,9 @@ const footer = document.querySelector("footer")
 const bodyEl = document.querySelector("body")
 let sidebar = window.innerWidth >= 768
 const data = await initialize()
+// const data2=await getBoards()
 let firstTitle = data.boards.filter(data => data.name === "Platform Launch")[0].name
 let mode = false
-
 
 // HEADER COMPONENT
 function fetchHeader(element, db, title, mode){
